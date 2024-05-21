@@ -5,7 +5,9 @@ self.addEventListener('install', function(event) {
         '/',
         '/index.html',
         '/manifest.json',
-        '/path/to/icon.png'
+        '/sw.js',
+        '/path/to/icon-192x192.png',
+        '/path/to/icon-512x512.png'
       ]);
     })
   );

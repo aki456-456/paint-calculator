@@ -1,55 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>塗料計算アプリ</title>
-    <link rel="manifest" href="./manifest.json">
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('./sw.js').then(function(registration) {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, function(error) {
-                    console.log('ServiceWorker registration failed: ', error);
-                });
-            });
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <title>Paint Calculator</title>
 </head>
 <body>
-    <h2>塗料計算アプリ</h2>
-    <form id="paintForm">
-        <label for="baseAmount">取材の量 (ml):</label>
-        <input type="number" id="baseAmount" name="baseAmount"><br><br>
-        
-        <label for="ratio">比率 (取材:硬化剤):</label>
-        <input type="text" id="ratio" name="ratio" placeholder="例: 9:1"><br><br>
-
-        <label for="dilutionRate">希釈率 (%) :</label>
-        <input type="number" id="dilutionRate" name="dilutionRate"><br><br>
-
-        <button type="button" onclick="calculate()">計算</button>
-    </form>
-
-    <h3>結果</h3>
-    <p id="hardenerAmount">硬化剤の量: </p>
-    <p id="thinnerAmount">希釈剤の量: </p>
-
-    <script>
-        function calculate() {
-            var baseAmount = parseFloat(document.getElementById('baseAmount').value);
-            var ratio = document.getElementById('ratio').value.split(':');
-            var baseRatio = parseFloat(ratio[0]);
-            var hardenerRatio = parseFloat(ratio[1]);
-
-            var hardenerAmount = (baseAmount / baseRatio) * hardenerRatio;
-
-            var dilutionRate = parseFloat(document.getElementById('dilutionRate').value);
-            var thinnerAmount = baseAmount * (dilutionRate / 100);
-
-            document.getElementById('hardenerAmount').innerText = "硬化剤の量: " + hardenerAmount.toFixed(2) + " ml";
-            document.getElementById('thinnerAmount').innerText = "希釈剤の量: " + thinnerAmount.toFixed(2) + " ml";
-        }
-    </script>
+  <h1>Paint Calculator</h1>
+  <form id="paintForm">
+    <!-- Your form elements here -->
+  </form>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      }).catch(function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+    }
+  </script>
 </body>
 </html>
-
