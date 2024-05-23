@@ -1,45 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
     <title>Paint Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Paint Calculator</h1>
-    <form id="paintForm">
-        <label for="baseAmount">主材の量 (ml):</label>
-        <input type="number" id="baseAmount" name="baseAmount"><br>
-        
-        <label for="hardenerAmount">硬化材の量 (ml):</label>
-        <input type="number" id="hardenerAmount" name="hardenerAmount"><br>
-
-        <label for="ratio">比率:</label>
-        <select id="ratio" name="ratio">
-            <option value="9:1">9:1</option>
-            <option value="4:1">4:1</option>
-            <option value="1:1">1:1</option>
-        </select><br>
-
-        <button type="button" onclick="calculate()">計算</button>
-    </form>
-
-    <h2>計算結果</h2>
-    <p id="result"></p>
-
-    <script src="sw.js"></script>
-    <script>
-        function calculate() {
-            const baseAmount = parseFloat(document.getElementById('baseAmount').value);
-            const hardenerAmount = parseFloat(document.getElementById('hardenerAmount').value);
-            const ratio = document.getElementById('ratio').value.split(':');
-            const ratioBase = parseFloat(ratio[0]);
-            const ratioHardener = parseFloat(ratio[1]);
-            const totalAmount = baseAmount + hardenerAmount;
-            const calculatedHardener = (baseAmount * ratioHardener) / ratioBase;
-            document.getElementById('result').innerText = `合計量: ${totalAmount} ml, 硬化材: ${calculatedHardener} ml`;
-        }
-    </script>
+    <div class="container">
+        <h1>Paint Calculator</h1>
+        <form id="paintForm">
+            <div class="form-group">
+                <label for="baseRatio">ベース比率</label>
+                <select id="baseRatio" name="baseRatio">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                対
+                <select id="hardenerRatio" name="hardenerRatio">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="baseAmount">ベース容量設定</label>
+                <input type="number" id="baseAmount" name="baseAmount" placeholder="ベース容量 (g)">
+            </div>
+            <button type="button" id="calculateButton">硬化剤の容量を計算する</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
