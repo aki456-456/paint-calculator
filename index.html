@@ -12,21 +12,21 @@
         <h1>Paint Calculator</h1>
         <form id="paintForm">
             <div class="form-group">
-                <label for="baseRatio">ベース比率 (主材)</label>
-                <input type="number" id="baseRatio" name="baseRatio" min="1" max="30" required>
+                <label for="baseRatio">ベース比率</label>
+                <input type="number" id="baseRatio" name="baseRatio" min="1" max="30">
                 対
-                <label for="hardenerRatio">効果材比率</label>
-                <input type="number" id="hardenerRatio" name="hardenerRatio" min="1" max="30" required>
+                <input type="number" id="hardenerRatio" name="hardenerRatio" min="1" max="30">
+                <label for="hardenerRatio">硬化材比率</label>
             </div>
             <div class="form-group">
-                <label for="baseAmount">ベース容量設定 (g)</label>
-                <input type="number" id="baseAmount" name="baseAmount" placeholder="ベース容量を入力してください" required>
+                <label for="baseAmount">ベース容量設定</label>
+                <input type="number" id="baseAmount" name="baseAmount" placeholder="ベース容量を入力してください (g)">
             </div>
             <div class="form-group">
                 <label for="dilutionRate">希釈率 (%)</label>
-                <input type="number" id="dilutionRate" name="dilutionRate" placeholder="希釈率を入力してください (0-100)" min="0" max="100" required>
+                <input type="number" id="dilutionRate" name="dilutionRate" placeholder="希釈率を入力してください (0-100%)">
             </div>
-            <button type="button" id="calculateButton" onclick="calculate()">計算する</button>
+            <button type="button" id="calculateButton">計算する</button>
         </form>
         <div id="result"></div>
     </div>
