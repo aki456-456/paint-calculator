@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>塗料比率計算</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="styles.css">
-    <title>Paint Calculator</title>
 </head>
 <body>
     <div class="container">
-        <h1>Paint Calculator</h1>
+        <h1>塗料比率計算</h1>
         <form id="paintForm">
             <div class="form-group">
                 <label for="baseRatio">ベース比率</label>
-                <input type="number" id="baseRatio" name="baseRatio" min="1" max="30" placeholder="ベース比率を入力してください">
+                <input type="number" id="baseRatio" name="baseRatio" placeholder="ベース比率を入力してください">
             </div>
             <div class="form-group">
                 <label for="hardenerRatio">硬化材比率</label>
-                <input type="number" id="hardenerRatio" name="hardenerRatio" min="1" max="30" placeholder="硬化材比率を入力してください">
+                <input type="number" id="hardenerRatio" name="hardenerRatio" placeholder="硬化材比率を入力してください">
             </div>
             <div class="form-group">
                 <label for="baseAmount">ベース容量設定</label>
@@ -26,7 +26,6 @@
             <div class="form-group">
                 <label for="dilutionRate">希釈率 (%)</label>
                 <input type="number" id="dilutionRate" name="dilutionRate" placeholder="希釈率を入力してください (0-100%)">
-                <small>（ベース容量を元に計算）</small>
             </div>
             <button type="button" id="calculateButton">計算する</button>
         </form>
