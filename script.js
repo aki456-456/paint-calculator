@@ -1,22 +1,24 @@
 document.getElementById('calculateButton').addEventListener('click', function() {
-    const baseRatio = parseFloat(document.getElementById('baseRatio').value);
-    const hardenerRatio = parseFloat(document.getElementById('hardenerRatio').value);
+    const baseRatio = parseFloat(document.getElementById('baseRatio').value) || 0;
+    const hardenerRatio = parseFloat(document.getElementById('hardenerRatio').value) || 0;
     const baseAmount = parseFloat(document.getElementById('baseAmount').value);
-    const dilutionRate = parseFloat(document.getElementById('dilutionRate').value) || 0; // 希釈率が未入力の場合は0を設定
+    const dilutionRate = parseFloat(document.getElementById('dilutionRate').value) || 0;
 
-    if (isNaN(baseAmount) || baseAmount <= 0) {
-        document.getElementById('result').innerHTML = 'ベース容量を正しく入力してください。';
-        return;
+    let hardenerAmount = 0;
+    let dilutionAmount = 0;
+
+    if (baseAmount) {
+        if (baseRatio && hardenerRatio) {
+            hardenerAmount = (baseAmount / baseRatio) * hardenerRatio;
+        }
+        dilutionAmount = baseAmount * (dilutionRate / 100);
     }
 
-    const hardenerAmount = (baseAmount / baseRatio) * hardenerRatio;
-    const totalAmount = baseAmount + hardenerAmount;
-    const dilutionAmount = (totalAmount * dilutionRate) / 100;
+    let resultText = `ベース: ${baseAmount} g\n`;
+    if (hardenerRatio && baseRatio) {
+        resultText += `硬化材: ${hardenerAmount.toFixed(2)} g\n`;
+    }
+    resultText += `希釈材: ${dilutionAmount.toFixed(2)} g`;
 
-    const result = `
-        <p>硬化剤の容量: ${hardenerAmount.toFixed(2)} g</p>
-        <p>希釈材の容量: ${dilutionAmount.toFixed(2)} g</p>
-    `;
-
-    document.getElementById('result').innerHTML = result;
+    document.getElementById('result').innerText = resultText;
 });
